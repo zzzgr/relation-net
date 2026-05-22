@@ -82,7 +82,7 @@ info "migrations 已应用"
 if [[ "$IS_FRESH" == true && "${DEMO:-}" == "1" ]]; then
   echo ""
   warn "正在加载 Demo 演示数据..."
-  npx wrangler d1 execute relation-net-db --remote --file=scripts/demo-data.sql
+  npx wrangler d1 execute DB --remote --file=scripts/demo-data.sql
   info "Demo 数据已加载（35 人物 / 20 事件 / 家族关系 / 地址 / 手机号）"
 elif [[ "$IS_FRESH" == true ]]; then
   info "跳过 Demo 数据（如需加载，使用 DEMO=1 npm run deploy）"
