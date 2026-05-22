@@ -8,7 +8,7 @@
 -- 爷爷奶奶 → 爸爸/大伯/小姑 → 我/堂哥/表妹 → 侄子
 -- ────────────────────────────────────────────────────────
 
-INSERT INTO persons (id, dialect_title, real_name, gender, birth_date, birth_calendar, kinship, avatar_char) VALUES
+INSERT OR REPLACE INTO persons (id, dialect_title, real_name, gender, birth_date, birth_calendar, kinship, avatar_char) VALUES
 (1,  '爷爷',   '王德明', 'male',   '1945-03-12', 'lunar',  'blood', '王'),
 (2,  '奶奶',   '李秀兰', 'female', '1947-08-20', 'lunar',  'blood', '李'),
 (3,  '爸爸',   '王建国', 'male',   '1968-10-01', 'solar',  'blood', '王'),
@@ -25,7 +25,7 @@ INSERT INTO persons (id, dialect_title, real_name, gender, birth_date, birth_cal
 (14, '女朋友', '苏晓晴', 'female', '1996-06-18', 'solar',  'in_law','苏');
 
 -- 王家关系
-INSERT INTO relations (from_person_id, to_person_id, relation_type, birth_order) VALUES
+INSERT OR IGNORE INTO relations (from_person_id, to_person_id, relation_type, birth_order) VALUES
 (1, 5,  'parent', 1),
 (2, 5,  'parent', 1),
 (1, 3,  'parent', 2),
@@ -41,7 +41,7 @@ INSERT INTO relations (from_person_id, to_person_id, relation_type, birth_order)
 (10, 13, 'parent', 1),
 (11, 13, 'parent', 1);
 
-INSERT INTO relations (from_person_id, to_person_id, relation_type) VALUES
+INSERT OR IGNORE INTO relations (from_person_id, to_person_id, relation_type) VALUES
 (1, 2,  'spouse'),
 (3, 4,  'spouse'),
 (5, 6,  'spouse'),
@@ -54,7 +54,7 @@ INSERT INTO relations (from_person_id, to_person_id, relation_type) VALUES
 -- 外公外婆 → 大舅/二姨/妈妈 → 表哥/表姐
 -- ────────────────────────────────────────────────────────
 
-INSERT INTO persons (id, dialect_title, real_name, gender, birth_date, birth_calendar, kinship, avatar_char) VALUES
+INSERT OR REPLACE INTO persons (id, dialect_title, real_name, gender, birth_date, birth_calendar, kinship, avatar_char) VALUES
 (15, '外公',   '张国栋', 'male',   '1943-11-05', 'lunar',  'blood', '张'),
 (16, '外婆',   '周桂芳', 'female', '1945-06-18', 'lunar',  'blood', '周'),
 (17, '大舅',   '张伟民', 'male',   '1966-03-22', 'solar',  'blood', '张'),
@@ -65,7 +65,7 @@ INSERT INTO persons (id, dialect_title, real_name, gender, birth_date, birth_cal
 (22, '表姐',   '林雨薇', 'female', '1993-10-28', 'solar',  'blood', '薇'),
 (23, '表嫂',   '黄小燕', 'female', '1991-03-15', 'solar',  'in_law','黄');
 
-INSERT INTO relations (from_person_id, to_person_id, relation_type, birth_order) VALUES
+INSERT OR IGNORE INTO relations (from_person_id, to_person_id, relation_type, birth_order) VALUES
 (15, 17, 'parent', 1),
 (16, 17, 'parent', 1),
 (15, 19, 'parent', 2),
@@ -77,7 +77,7 @@ INSERT INTO relations (from_person_id, to_person_id, relation_type, birth_order)
 (19, 22, 'parent', 1),
 (20, 22, 'parent', 1);
 
-INSERT INTO relations (from_person_id, to_person_id, relation_type) VALUES
+INSERT OR IGNORE INTO relations (from_person_id, to_person_id, relation_type) VALUES
 (15, 16, 'spouse'),
 (17, 18, 'spouse'),
 (19, 20, 'spouse'),
@@ -87,14 +87,14 @@ INSERT INTO relations (from_person_id, to_person_id, relation_type) VALUES
 -- 家族树 3：刘家（堂嫂娘家，3 代）
 -- ────────────────────────────────────────────────────────
 
-INSERT INTO persons (id, dialect_title, real_name, gender, birth_date, birth_calendar, kinship, avatar_char) VALUES
+INSERT OR REPLACE INTO persons (id, dialect_title, real_name, gender, birth_date, birth_calendar, kinship, avatar_char) VALUES
 (24, '亲家公', '刘福生', 'male',   '1964-01-20', 'lunar',  'in_law','刘'),
 (25, '亲家母', '吴秀英', 'female', '1965-05-09', 'solar',  'in_law','吴'),
 (26, '小舅子', '刘强',   'male',   '1996-11-11', 'solar',  'in_law','强'),
 (27, '弟妹',   '何雪',   'female', '1997-03-25', 'solar',  'in_law','何'),
 (28, '外甥女', '刘诗涵', 'female', '2022-06-01', 'solar',  'in_law','涵');
 
-INSERT INTO relations (from_person_id, to_person_id, relation_type, birth_order) VALUES
+INSERT OR IGNORE INTO relations (from_person_id, to_person_id, relation_type, birth_order) VALUES
 (24, 11, 'parent', 1),
 (25, 11, 'parent', 1),
 (24, 26, 'parent', 2),
@@ -102,7 +102,7 @@ INSERT INTO relations (from_person_id, to_person_id, relation_type, birth_order)
 (26, 28, 'parent', 1),
 (27, 28, 'parent', 1);
 
-INSERT INTO relations (from_person_id, to_person_id, relation_type) VALUES
+INSERT OR IGNORE INTO relations (from_person_id, to_person_id, relation_type) VALUES
 (24, 25, 'spouse'),
 (26, 27, 'spouse');
 
@@ -110,7 +110,7 @@ INSERT INTO relations (from_person_id, to_person_id, relation_type) VALUES
 -- 社会关系（丰富）
 -- ────────────────────────────────────────────────────────
 
-INSERT INTO persons (id, dialect_title, real_name, gender, birth_date, kinship, avatar_char) VALUES
+INSERT OR REPLACE INTO persons (id, dialect_title, real_name, gender, birth_date, kinship, avatar_char) VALUES
 (29, '发小',     '李磊',   'male',   '1995-09-03', 'social', '磊'),
 (30, '班主任',   '周老师', 'female', '1975-03-08', 'social', '周'),
 (31, '大学室友', '赵凯',   'male',   '1995-11-20', 'social', '凯'),
@@ -119,7 +119,7 @@ INSERT INTO persons (id, dialect_title, real_name, gender, birth_date, kinship, 
 (34, '健身教练', '杨帆',   'male',   '1990-01-15', 'social', '杨'),
 (35, '前同事',   '韩梅梅', 'female', '1994-08-30', 'social', '韩');
 
-INSERT INTO relations (from_person_id, to_person_id, relation_type) VALUES
+INSERT OR IGNORE INTO relations (from_person_id, to_person_id, relation_type) VALUES
 (9, 29, 'friend'),
 (30, 9, 'teacher'),
 (9, 31, 'friend'),
@@ -132,7 +132,7 @@ INSERT INTO relations (from_person_id, to_person_id, relation_type) VALUES
 -- 地址（覆盖多个城市）
 -- ────────────────────────────────────────────────────────
 
-INSERT INTO person_addresses (person_id, address, longitude, latitude, label) VALUES
+INSERT OR IGNORE INTO person_addresses (person_id, address, longitude, latitude, label) VALUES
 (1,  '湖南省长沙市岳麓区银杏路88号',       112.9388, 28.2278, '老家'),
 (3,  '广东省深圳市南山区科技园南路16号',   113.9436, 22.5362, '家'),
 (9,  '广东省深圳市福田区华强北路1号',     114.0886, 22.5484, '住所'),
@@ -151,7 +151,7 @@ INSERT INTO person_addresses (person_id, address, longitude, latitude, label) VA
 -- 手机号
 -- ────────────────────────────────────────────────────────
 
-INSERT INTO person_phones (person_id, phone, note) VALUES
+INSERT OR IGNORE INTO person_phones (person_id, phone, note) VALUES
 (3,  '13800001111', NULL),
 (4,  '13800002222', NULL),
 (5,  '13800003333', NULL),
@@ -170,7 +170,7 @@ INSERT INTO person_phones (person_id, phone, note) VALUES
 -- 事件（丰富，覆盖各类型）
 -- ────────────────────────────────────────────────────────
 
-INSERT INTO events (id, title, body, event_date, event_type, location, longitude, latitude, media) VALUES
+INSERT OR REPLACE INTO events (id, title, body, event_date, event_type, location, longitude, latitude, media) VALUES
 (1,  '爷爷奶奶金婚纪念',   '结婚50周年，全家聚餐庆祝',                 '2025-03-12', 'gathering', '长沙老家',         112.9388, 28.2278, '[]'),
 (2,  '堂哥婚礼',           '堂哥和堂嫂在南京举办婚礼',                 '2019-10-05', 'holiday',   '南京金陵饭店',     118.7800, 32.0600, '[]'),
 (3,  '全家三亚旅行',       '春节全家去三亚度假一周',                   '2024-02-10', 'travel',    '三亚亚龙湾',       109.6410, 18.1920, '[]'),
@@ -193,7 +193,7 @@ INSERT INTO events (id, title, body, event_date, event_type, location, longitude
 (20, '爸爸退休',           '王建国正式退休，开始享受生活',             '2028-10-01', 'work',      NULL,               NULL,     NULL,    '[]');
 
 -- 事件参与人
-INSERT INTO event_persons (event_id, person_id, role) VALUES
+INSERT OR IGNORE INTO event_persons (event_id, person_id, role) VALUES
 -- 金婚
 (1, 1, 'subject'), (1, 2, 'subject'), (1, 3, NULL), (1, 4, NULL), (1, 5, NULL), (1, 9, NULL),
 -- 堂哥婚礼
