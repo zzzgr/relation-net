@@ -78,12 +78,17 @@ warn "正在应用 migrations 到远端 D1..."
 npm run db:migrate
 info "migrations 已应用"
 
-# ── 5. 首次部署加载 Demo 数据 ─────────────────────────────────
+# ── 5. 首次部署：询问是否加载 Demo 数据 ──────────────────────
 if [[ "$IS_FRESH" == true ]]; then
   echo ""
-  warn "首次部署，正在加载 Demo 演示数据..."
-  npx wrangler d1 execute relation-net-db --remote --file=scripts/demo-data.sql
-  info "Demo 数据已加载（35 人物 / 20 事件 / 家族关系 / 地址 / 手机号）"
+  read -rp "$(echo -e "${YELLOW}[?]${NC} 是否加载演示数据？(y/N) ")" LOAD_DEMO
+  if [[ "$LOAD_DEMO" =~ ^[Yy]$ ]]; then
+    warn "正在加载 Demo 演示数据..."
+    npx wrangler d1 execute relation-net-db --remote --file=scripts/demo-data.sql
+    info "Demo 数据已加载（35 人物 / 20 事件 / 家族关系 / 地址 / 手机号）"
+  else
+    info "跳过 Demo 数据，部署为空白实例"
+  fi
 fi
 
 # ── 6. 构建前端 ───────────────────────────────────────────────
