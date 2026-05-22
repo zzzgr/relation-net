@@ -78,13 +78,21 @@ warn "正在应用 migrations 到远端 D1..."
 npm run db:migrate
 info "migrations 已应用"
 
-# ── 5. 构建前端 ───────────────────────────────────────────────
+# ── 5. 首次部署加载 Demo 数据 ─────────────────────────────────
+if [[ "$IS_FRESH" == true ]]; then
+  echo ""
+  warn "首次部署，正在加载 Demo 演示数据..."
+  npx wrangler d1 execute relation-net-db --remote --file=scripts/demo-data.sql
+  info "Demo 数据已加载（35 人物 / 20 事件 / 家族关系 / 地址 / 手机号）"
+fi
+
+# ── 6. 构建前端 ───────────────────────────────────────────────
 echo ""
 warn "正在构建前端..."
 npm run build
 info "构建完成"
 
-# ── 6. 部署 Worker ────────────────────────────────────────────
+# ── 7. 部署 Worker ────────────────────────────────────────────
 echo ""
 warn "正在部署 Worker..."
 npx wrangler deploy
