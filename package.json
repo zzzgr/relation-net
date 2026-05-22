@@ -12,6 +12,7 @@
     "preview": "vite preview",
     "lint": "eslint .",
     "deploy": "bash scripts/deploy.sh",
+    "deploy:demo": "DEMO=1 bash scripts/deploy.sh",
     "demo": "wrangler d1 execute relation-net-db --local --file=scripts/demo-data.sql",
     "demo:remote": "wrangler d1 execute relation-net-db --remote --file=scripts/demo-data.sql",
     "db:migrate": "wrangler d1 migrations apply DB --remote",
