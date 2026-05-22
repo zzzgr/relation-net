@@ -1,0 +1,36 @@
+# Dependencies
+node_modules/
+
+# Build output
+dist/
+dist-ssr/
+
+# Logs
+*.log
+npm-debug.log*
+
+# Cloudflare / Wrangler
+.dev.vars
+.wrangler/
+
+# Local env (secrets)
+.env
+.env.local
+.env.*.local
+*.local
+
+# Editor / IDE
+.vscode/
+.idea/
+.DS_Store
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# AI tools
+.claude/
+
+# OS
+Thumbs.db
